@@ -1,12 +1,10 @@
-function ToDoRowItem () {
-    const rowNum=1;
-    const rowDesc='Bang';
-    const rowAssigned='Gauri';
+function ToDoRowItem (props) {
+    
     return(
         <tr>
-            <th scope='row'>{rowNum}</th>
-            <td>{rowDesc}</td>
-            <td>{rowAssigned}</td>
+            <th scope='row'>{props.rowNum}</th>
+            <td>{props.rowDesc}</td>
+            <td>{props.rowAssigned}</td>
         </tr>
     )
 }
