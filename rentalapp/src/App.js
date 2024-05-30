@@ -3,6 +3,7 @@ import './App.css';
 import ToDoRowItem from './components/ToDoRowItem';
 import ToDoTable from './components/ToDoTable';
 import React, {useState} from 'react';
+import NewForm from './components/NewForm';
 function App() {
   const [todos, setTodos] = useState([
     { rowNum:1, rowDesc:'Study',rowAssigned:'React'},
@@ -10,12 +11,12 @@ function App() {
     { rowNum:3, rowDesc:'Develop',rowAssigned:'Application'}
   ])
   
-const addTask = () =>{
+const addTask = (description, assigned) =>{
   if (todos.length>0){
     const newTask= {
       rowNum:todos.length+1,
-      rowDesc:"Bang",
-      rowAssigned:"Disha"
+      rowDesc:description,
+      rowAssigned:assigned
     };
     setTodos(todos => [...todos,newTask]) //destructure const[todos, setTodos] and add newTask contents to the variable 
     //console.log(todos);
@@ -31,6 +32,7 @@ const addTask = () =>{
         <div className='card-body'>
           <ToDoTable todos={todos}/>
           <button className='btn btn-primary' onClick={addTask}>Add new task</button>
+          <NewForm addTask ={addTask}/>
         </div>
       </div>
     </div>
