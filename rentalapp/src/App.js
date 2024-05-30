@@ -5,6 +5,9 @@ import ToDoTable from './components/ToDoTable';
 import React, {useState} from 'react';
 import NewForm from './components/NewForm';
 function App() {
+  //state of form display
+  const [showForm, setShowForm] = useState(false);
+
   const [todos, setTodos] = useState([
     { rowNum:1, rowDesc:'Study',rowAssigned:'React'},
     { rowNum:2, rowDesc:'Implement',rowAssigned:'Terraform'},
@@ -12,15 +15,30 @@ function App() {
   ])
   
 const addTask = (description, assigned) =>{
+  let rowNum=0;
+  
   if (todos.length>0){
+    rowNum=todos[todos.length-1].rowNum+1;
+  }
+  else{
+    rowNum=1;
+  }
+    
     const newTask= {
-      rowNum:todos.length+1,
+      rowNum:rowNum,
       rowDesc:description,
       rowAssigned:assigned
     };
     setTodos(todos => [...todos,newTask]) //destructure const[todos, setTodos] and add newTask contents to the variable 
     //console.log(todos);
-  }
+    
+}
+
+const deleteTask =(deleteTaskRRowNumber)=> {
+  let filtered =todos.filter(function (value){
+    return value.rowNum !== deleteTaskRRowNumber;
+  });
+  setTodos(filtered);
 }
 
   return (
@@ -30,9 +48,11 @@ const addTask = (description, assigned) =>{
           Your To-dos
         </div>
         <div className='card-body'>
-          <ToDoTable todos={todos}/>
-          <button className='btn btn-primary' onClick={addTask}>Add new task</button>
+          <ToDoTable todos={todos} deleteTask={deleteTask}/>
+          <button className='btn btn-primary' onClick={() => setShowForm(!showForm)}>Add new task</button>
+          {showForm &&
           <NewForm addTask ={addTask}/>
+}
         </div>
       </div>
     </div>

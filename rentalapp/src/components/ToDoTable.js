@@ -12,10 +12,13 @@ function ToDoTable(props) {
             <tbody>
               {
                 props.todos.map(todos => (
-                  <ToDoRowItem 
+                  <ToDoRowItem
+                    key={todos.rowNum} 
                     rowNum={todos.rowNum}
                     rowDesc={todos.rowDesc}
                     rowAssigned={todos.rowAssigned}
+                    deleteTask={props.deleteTask}
+                    
                     />
                 ))
               } 
