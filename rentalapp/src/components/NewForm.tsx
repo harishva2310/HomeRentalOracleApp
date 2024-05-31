@@ -1,10 +1,11 @@
 import React, {useState} from "react";
-function NewForm (props){
+export const NewForm: React.FC<{addTask:Function}> =
+ (props)=>{
 
 const [description, setDescription] = useState('');
 const [assigned, setAssigned] = useState('');
 
-const submitNewTask = (description,assigned) =>{
+const submitNewTask = () =>{
     if(description!== '' && assigned!==''){
         props.addTask(description,assigned)
         setAssigned('')
@@ -24,18 +25,18 @@ const assignedChange = (event) =>{
 
     return(
         <div className="mt-5">
-            <form onSubmit={(e) => { e.preventDefault(); submitNewTask(description,assigned); }}>
+            <form onSubmit={(e) => { e.preventDefault(); submitNewTask(); }}>
                 <div className="mb-3">
                     <label className="form-label">Assigned</label>
                     <input type="text" className="form-control" required onChange={e => setAssigned(e.target.value)} value={assigned}></input>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Description</label>
-                    <input type="textarea" className="form-control" rows={3} required onChange={e =>setDescription(e.target.value)} value={description}></input>
+                    <input type="textarea" className="form-control" required onChange={e =>setDescription(e.target.value)} value={description}></input>
                 </div>
                 <button type="submit" className="btn btn-primary mt-3" >Add Task</button>
             </form>
         </div>
     )
 }
-export default NewForm
+//export default NewForm

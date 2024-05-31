@@ -1,10 +1,10 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
-import ToDoRowItem from './components/ToDoRowItem';
-import ToDoTable from './components/ToDoTable';
+//import ToDoRowItem from './components/ToDoRowItem';
+import {ToDoTable} from './components/ToDoTable';
 import React, {useState} from 'react';
-import NewForm from './components/NewForm';
-function App() {
+import {NewForm} from './components/NewForm';
+export const App = () =>{
   //state of form display
   const [showForm, setShowForm] = useState(false);
 
@@ -14,7 +14,7 @@ function App() {
     { rowNum:3, rowDesc:'Develop',rowAssigned:'Application'}
   ])
   
-const addTask = (description, assigned) =>{
+const addTask = (description:string, assigned:string) =>{
   let rowNum=0;
   
   if (todos.length>0){
@@ -34,7 +34,7 @@ const addTask = (description, assigned) =>{
     
 }
 
-const deleteTask =(deleteTaskRRowNumber)=> {
+const deleteTask =(deleteTaskRRowNumber:number)=> {
   let filtered =todos.filter(function (value){
     return value.rowNum !== deleteTaskRRowNumber;
   });
@@ -59,4 +59,4 @@ const deleteTask =(deleteTaskRRowNumber)=> {
   );
 }
 
-export default App;
+//export default App;
