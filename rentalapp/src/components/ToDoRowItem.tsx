@@ -1,4 +1,11 @@
-function ToDoRowItem (props) {
+import React from "react"
+
+export const ToDoRowItem: React.FC<{
+    rowNum:number,
+    rowDesc:string,
+    rowAssigned:string, 
+    deleteTask: Function
+}> = (props) =>{
     
     return(
         <tr >
@@ -8,4 +15,4 @@ function ToDoRowItem (props) {
         </tr>
     )
 }
-export default ToDoRowItem
+//export default ToDoRowItem
