@@ -7,12 +7,14 @@ import { Carousel } from './layouts/HomePage/components/Carousel';
 import { Heros } from './layouts/HomePage/components/Heros';
 import { LibraryServices } from './layouts/HomePage/components/LibraryServices';
 import { HomePage } from './layouts/HomePage/HomePage';
+import { SearchBooksPage } from './layouts/SearchBooksPage/SearchBooksPage';
 
 function App() {
   return (
     <div>
       <Navbar/>
-      <HomePage/>
+      {/*<HomePage/>*/}
+      <SearchBooksPage/>
       <Footer/>
     </div>
   );
