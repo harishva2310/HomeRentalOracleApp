@@ -23,7 +23,7 @@ export const SearchBooksPage = () => {
 
             let url: string = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
 
-            if (searchUrl == '') {
+            if (searchUrl === '') {
                 url = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
 
             }
@@ -99,10 +99,10 @@ export const SearchBooksPage = () => {
     const categoryField=(value:string)=>{
         setCurrentPage(1);
         if (
-            value.toLowerCase()=='fe'||
-            value.toLowerCase()=='be'||
-            value.toLowerCase()=='data'||
-            value.toLowerCase()=='devops'
+            value.toLowerCase()==='fe'||
+            value.toLowerCase()==='be'||
+            value.toLowerCase()==='data'||
+            value.toLowerCase()==='devops'
         ){
             setCategorySelection(value);
             setSearchUrl(`/search/findByCategory?category=${value}&page=<pageNumber>&size=${booksPerPage}`);
